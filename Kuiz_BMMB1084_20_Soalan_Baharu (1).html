@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kuiz interaktif BMMB1084 tentang Sistem Ejaan Rumi 1972 dan kegramatisan tatabahasa Bahasa Melayu.">
+<title>Kuiz Interaktif BMMB1084 | Sistem Ejaan & Tatabahasa</title>
+<style>
+:root{--navy:#153b68;--blue:#2864a5;--sky:#eaf4ff;--ink:#203047;--muted:#61728a;--white:#fff;--line:#dbe6f2;--green:#19734b;--greenbg:#e8f7ef;--red:#a83b42;--redbg:#fff0f0;--gold:#f4c96b;--lav:#f2efff;--shadow:0 14px 36px rgba(27,62,101,.10)}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#edf6ff 0,#f8fbff 390px,#f6f8fc 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #f1b92c;outline-offset:3px}
+header{background:linear-gradient(120deg,#143963,#2868a9);color:#fff;padding:28px 18px 62px}
+.header-inner{max-width:980px;margin:auto}
+.kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#cfe7ff}
+h1{font-size:clamp(1.65rem,4vw,2.5rem);line-height:1.15;margin:10px 0 12px;max-width:820px}
+header p{margin:0;max-width:760px;color:#e5f1ff}
+.big-idea{display:inline-block;margin-top:18px;padding:10px 14px;border:1px solid #ffffff55;background:#ffffff12;border-radius:12px;font-size:.94rem}
+main{max-width:900px;margin:-38px auto 50px;padding:0 16px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:clamp(18px,4vw,32px);margin-bottom:20px}
+.hidden{display:none!important}
+h2{color:var(--navy);margin:0 0 12px;font-size:1.4rem}
+h3{color:var(--navy);margin:0 0 8px}
+.muted{color:var(--muted)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.pill{font-size:.82rem;background:var(--sky);color:var(--navy);padding:6px 10px;border-radius:99px;font-weight:700}
+.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:750;transition:transform .12s,filter .12s}
+.btn:hover{filter:brightness(.97);transform:translateY(-1px)}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-secondary{background:#eaf1f9;color:var(--navy)}
+.btn-outline{background:#fff;color:var(--navy);border:1px solid #c8d8e9}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.note{border-left:4px solid #6ba5e7;background:#f2f8ff;padding:12px 14px;border-radius:8px;color:#314a67}
+.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.progress-track{height:9px;background:#e8eff7;border-radius:99px;overflow:hidden;margin:12px 0 24px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#3479bd,#74b8ee);border-radius:99px;transition:width .25s}
+.question{font-size:clamp(1.1rem,2.5vw,1.35rem);font-weight:750;line-height:1.4;margin:10px 0 18px}
+.options{display:grid;gap:10px}
+.option{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;padding:14px;border:1.5px solid var(--line);background:#fff;border-radius:14px;color:var(--ink);line-height:1.45}
+.option:hover{border-color:#82b3e4;background:#f8fbff}
+.option .letter{flex:0 0 30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#edf4fc;color:var(--navy);font-weight:800}
+.option.selected{border-color:var(--blue);background:#edf6ff;box-shadow:0 0 0 2px #d6eaff}
+.option.correct{border-color:#5eae83;background:var(--greenbg)}
+.option.wrong{border-color:#e19a9d;background:var(--redbg)}
+.option:disabled{cursor:default}
+.feedback{padding:14px 16px;border-radius:14px;margin-top:16px}
+.feedback.good{background:var(--greenbg);color:#145d3b}
+.feedback.bad{background:var(--redbg);color:#8f2b32}
+.feedback strong{display:block;margin-bottom:4px}
+.navrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:22px}
+.score-circle{width:142px;height:142px;border-radius:50%;background:conic-gradient(#3479bd var(--deg),#e8eff7 0);display:grid;place-items:center;margin:12px auto 20px}
+.score-inner{width:116px;height:116px;border-radius:50%;background:#fff;display:grid;place-content:center;text-align:center}
+.score-number{font-size:2rem;font-weight:850;color:var(--navy);line-height:1.1}
+.review-item{border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:12px}
+.review-item p{margin:8px 0}
+.review-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+.correct-text{color:var(--green);font-weight:750}
+.wrong-text{color:var(--red);font-weight:750}
+details{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:14px}
+summary{font-weight:800;color:var(--navy);cursor:pointer}
+input[type=url]{width:100%;border:1px solid #cbd9e8;border-radius:10px;padding:12px;margin:8px 0 12px}
+.qr-layout{display:grid;grid-template-columns:1fr;gap:16px}
+.qr-box{min-height:180px;border:1px dashed #b9cce0;border-radius:14px;display:grid;place-items:center;padding:14px;text-align:center;background:#f9fcff}
+.qr-box img{max-width:280px;width:100%;height:auto;border-radius:8px}
+.small{font-size:.9rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 28px}
+@media(min-width:700px){.qr-layout{grid-template-columns:1.2fr .8fr}}
+@media(max-width:520px){header{padding-bottom:54px}.panel{border-radius:17px}.btn{padding:12px 14px}.navrow .btn{flex:1}.question{font-size:1.1rem}}
+@media print{header{padding:15px;background:#fff;color:#000}main{margin:0 auto}.panel{box-shadow:none;break-inside:avoid}.btn,details#qrSection{display:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="kicker">Bahan sokongan PB · BMMB1084</div>
+    <h1>Kuiz Interaktif: Sistem Ejaan Rumi 1972 dan Kegramatisan Tatabahasa Bahasa Melayu</h1>
+    <p>Uji kefahaman tentang pembakuan ejaan, ejaan kata pinjaman dan penggunaan tatabahasa yang gramatis.</p>
+    <div class="big-idea"><strong>The Big Idea:</strong> “Tatabahasa yang Kukuh Memperkasa Kemahiran dan Sejarah Bahasa Melayu”.</div>
+  </div>
+</header>
+<main>
+  <section id="startScreen" class="panel">
+    <h2>Selamat datang!</h2>
+    <p>Kuiz ini mengandungi <strong>20 soalan objektif</strong>. Setiap soalan mempunyai empat pilihan jawapan dan satu jawapan terbaik.</p>
+    <div class="pills"><span class="pill">20 soalan</span><span class="pill">Aneka pilihan</span><span class="pill">Maklum balas segera</span><span class="pill">Semakan jawapan</span></div>
+    <div class="note"><strong>Arahan:</strong> Pilih satu jawapan, tekan <em>Semak Jawapan</em> untuk membaca maklum balas, kemudian teruskan. Markah akhir dikira berdasarkan jawapan yang betul selepas semua soalan dijawab.</div>
+    <div class="actions"><button id="startBtn" class="btn btn-primary">Mula Kuiz</button></div>
+  </section>
+
+  <section id="quizScreen" class="panel hidden" aria-live="polite">
+    <div class="topline"><span class="pill" id="topicPill">Topik</span><strong id="progressText">Soalan 1 daripada 20</strong></div>
+    <div class="progress-track" role="progressbar" aria-label="Kemajuan kuiz" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0" id="progressBar"><div id="progressFill" class="progress-fill"></div></div>
+    <div id="questionText" class="question"></div>
+    <div id="options" class="options"></div>
+    <div id="feedback" class="feedback hidden" role="status"></div>
+    <div class="navrow">
+      <button id="prevBtn" class="btn btn-secondary">← Sebelum</button>
+      <div class="actions" style="margin:0">
+        <button id="checkBtn" class="btn btn-primary">Semak Jawapan</button>
+        <button id="nextBtn" class="btn btn-secondary">Seterusnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="panel hidden">
+    <h2>Keputusan kuiz</h2>
+    <div class="score-circle" id="scoreCircle" style="--deg:0deg"><div class="score-inner"><div class="score-number" id="scoreNumber">0/20</div><div class="small muted">markah</div></div></div>
+    <p id="scoreSummary" style="text-align:center;font-size:1.08rem;font-weight:750"></p>
+    <p id="scoreFeedback" class="muted" style="text-align:center"></p>
+    <div class="actions" style="justify-content:center">
+      <button id="reviewBtn" class="btn btn-primary">Semak Semua Jawapan</button>
+      <button id="retryBtn" class="btn btn-secondary">Cuba Semula</button>
+    </div>
+    <div id="reviewList" class="hidden" aria-live="polite"></div>
+  </section>
+
+  <details id="qrSection">
+    <summary>Kod QR untuk perkongsian kuiz</summary>
+    <div class="qr-layout" style="margin-top:14px">
+      <div>
+        <p>Masukkan <strong>URL awam</strong> tempat fail kuiz ini diterbitkan. Penjana QR menggunakan perkhidmatan dalam talian, jadi Internet diperlukan untuk menghasilkan imej QR. Kuiz itu sendiri boleh digunakan tanpa Internet selepas fail HTML dimuat turun.</p>
+        <label for="publicUrl"><strong>URL awam kuiz</strong></label>
+        <input type="url" id="publicUrl" placeholder="https://nama-pengguna.github.io/nama-repositori/Kuiz_BMMB1084_20_Soalan.html" autocomplete="url">
+        <div class="actions">
+          <button id="generateQrBtn" class="btn btn-primary">Jana Kod QR</button>
+          <button id="downloadQrBtn" class="btn btn-secondary" disabled>Simpan PNG</button>
+        </div>
+        <p id="qrStatus" class="small muted" role="status">Belum ada kod QR. Jangan masukkan pautan fail tempatan seperti C:\\ atau file:///.</p>
+      </div>
+      <div class="qr-box" id="qrBox"><span class="muted">Pratonton kod QR akan dipaparkan di sini.</span></div>
+    </div>
+    <div class="note" style="margin-top:16px"><strong>Nota penting:</strong> QR hanya menyimpan alamat pautan. Ia tidak memuat naik fail dan tidak boleh membuka fail yang hanya berada dalam komputer pencipta. Kekalkan URL yang sama selepas QR dicetak; jika fail dipindahkan atau alamat berubah, QR lama mungkin tidak berfungsi.</div>
+  </details>
+</main>
+<footer>BMMB1084 · Asas Tatabahasa Bahasa Melayu · Bahan pembelajaran digital</footer>
+<script>
+"use strict";
+const questions = [
+ {topic:"Sejarah ejaan",q:"Pasangan manakah tepat tentang sejarah ejaan Rumi pramerdeka?",opts:["Wilkinson — sistem ejaan Rumi pramerdeka; Za’ba — Sistem Ejaan Sekolah yang dikaitkan dengan Pelita Bahasa Melayu","Fajar Asia — diisytiharkan pada 1972; Za’ba — Ejaan Kongres 1956","Wilkinson — Ejaan Melindo; Za’ba — Akta Pendidikan 1996","Wilkinson — tulisan Jawi; Za’ba — Ejaan Bahasa Indonesia yang Disempurnakan"],a:0,why:"Sistem Ejaan Wilkinson dan Sistem Ejaan Sekolah/Za’ba merupakan perkembangan ejaan Rumi pramerdeka; Za’ba dikaitkan dengan Pelita Bahasa Melayu."},
+ {topic:"Sejarah ejaan",q:"Ejaan Fajar Asia dikaitkan dengan zaman …",opts:["Kesultanan Melayu Melaka","Pendudukan Jepun, 1942–1945","Selepas pengisytiharan 1972","Zaman kerajaan Srivijaya"],a:1,why:"Ejaan Fajar Asia digunakan dalam era pendudukan Jepun, antara 1942 hingga 1945."},
+ {topic:"Sejarah ejaan",q:"Ejaan Rumi Kongres terhasil daripada …",opts:["Kongres Bahasa dan Persuratan Melayu III pada 1956","Akta Pendidikan 1996","Kongres Bahasa Indonesia pada 1972","Karya Pelita Bahasa Melayu"],a:0,why:"Ejaan Kongres (1956) terhasil daripada Kongres Bahasa dan Persuratan Melayu III."},
+ {topic:"Sejarah ejaan",q:"Bilakah Sistem Ejaan Rumi 1972 diisytiharkan secara rasmi?",opts:["31 Ogos 1957","16 September 1963","16 Ogos 1972","22 Jun 1956"],a:2,why:"Sistem Ejaan Rumi 1972 diisytiharkan secara rasmi pada 16 Ogos 1972."},
+ {topic:"Keselarasan vokal",q:"Berapakah pola keselarasan vokal yang dibakukan dalam Sistem Ejaan Rumi 1972?",opts:["6 pola","10 pola","18 pola","24 pola"],a:2,why:"Sistem Ejaan Rumi 1972 membakukan 18 pola keselarasan vokal, berdasarkan bahan rujukan tugasan."},
+ {topic:"Kata pinjaman",q:"Apakah bentuk ejaan baku yang sepadan dengan perkataan Inggeris *quality* dalam contoh tugasan?",opts:["kualiti","kwaliti","quality","kuality"],a:0,why:"Contoh penyesuaian kata pinjaman ialah quality → kualiti."},
+ {topic:"Kata pinjaman",q:"Pilih ejaan yang betul bagi kata pinjaman *structure* seperti contoh tugasan.",opts:["struktur","stuktur","structure","strukture"],a:0,why:"Bentuk yang diberikan dalam tugasan ialah structure → struktur."},
+ {topic:"Ejaan kata",q:"Pilih pembetulan ejaan yang betul bagi frasa “mee goreng”.",opts:["mi goreng","mee-goreng","mie goreng","mi-goreng"],a:0,why:"Berdasarkan contoh dalam arahan tugasan, bentuk yang dikehendaki ialah mi goreng."},
+ {topic:"Imbuhan di-",q:"Ayat manakah menggunakan imbuhan awalan pasif *di-* dengan betul?",opts:["Buku itu di atas meja.","Laporan itu di semak oleh pensyarah.","Masalah itu diatasi melalui perbincangan.","Mereka berkumpul diatasi dewan."],a:2,why:"Dalam “diatasi”, di- ialah imbuhan yang bercantum dengan kata dasar atasi. Kata sendi nama di pula ditulis terpisah, contohnya di atas meja."},
+ {topic:"Imbuhan di-",q:"Mengapakah bentuk “di atasi” dibetulkan menjadi “diatasi” dalam konteks kata kerja pasif?",opts:["Semua perkataan yang bermula dengan di mesti dirapatkan","di- ialah imbuhan awalan pada kata kerja dan ditulis rapat","di ialah kata nama khas","Kata kerja pasif mesti ditulis dua perkataan"],a:1,why:"Dalam konteks kata kerja pasif “diatasi”, di- ialah imbuhan awalan dan mesti ditulis bercantum dengan kata dasar. Hal ini tidak bermaksud kata sendi nama di turut dirapatkan."},
+ {topic:"Kelewahan bahasa",q:"Pilih ayat yang mengelakkan kelewahan dalam frasa “banyak aktiviti-aktiviti”.",opts:["Banyak aktiviti-aktiviti dijalankan.","Banyak aktiviti dijalankan.","Banyak segala aktiviti-aktiviti dijalankan.","Aktiviti-aktiviti banyak-banyak dijalankan."],a:1,why:"Kata “banyak” sudah menunjukkan jumlah yang ramai; kata nama tidak perlu digandakan sekali lagi dalam contoh ini. Bentuk ringkas yang gramatis ialah “banyak aktiviti”."},
+ {topic:"Pemilihan kata",q:"Pilih ayat yang menggunakan kata kerja “memperbesar” dengan tepat.",opts:["Pihak sekolah memperbesar kawasan bacaan itu.","Pihak sekolah memperbesarkan besar kawasan bacaan itu.","Pihak sekolah besar memperbesar kawasan bacaan itu.","Pihak sekolah memperbesar-besarkan kawasan bacaan itu supaya luas."],a:0,why:"“Memperbesar” bermaksud menjadikan lebih besar. Dalam ayat ini, kata kerja itu digunakan tanpa pengulangan makna yang berlebihan."},
+ {topic:"Penanda wacana",q:"Frasa manakah sesuai digunakan untuk menambah maklumat dalam penulisan formal?",opts:["Selain itu,","Di atas itu,","Lain daripada itu semua sekali,","Sambil itu juga tambahan lagi pula,"],a:0,why:"“Selain itu” ialah penanda wacana yang sesuai untuk memperkenalkan maklumat tambahan."},
+ {topic:"Kata sendi nama",q:"Pilih ayat yang menggunakan frasa “dalam mesyuarat” dengan betul.",opts:["Keputusan itu dibincangkan dalam mesyuarat.","Keputusan itu dibincangkan di dalam mesyuarat itu berlangsung.","Keputusan itu dibincangkan dalam kepada mesyuarat.","Keputusan itu dibincangkan mesyuarat dalam."],a:0,why:"“Dalam mesyuarat” menyatakan konteks atau lingkungan perbincangan. Ayat pertama menggunakan frasa tersebut dengan lancar."},
+ {topic:"Hukum D-M",q:"Pembetulan yang tepat bagi susunan frasa “cili sos” ialah …",opts:["sos cili","cili-sos","sos yang cili","cili bagi sos"],a:0,why:"Mengikut Hukum D-M, unsur diterangkan hadir sebelum unsur menerangkan. “Sos” ialah unsur yang diterangkan dan “cili” menerangkannya, maka bentuknya “sos cili”."},
+ {topic:"Pembentukan ayat",q:"Ayat manakah mempunyai susunan yang gramatis?",opts:["Mencatatkan kejayaan, atlet itu dirai.","Atlet itu dirai kerana mencatatkan kejayaan.","Kejayaan mencatatkan atlet itu dirai.","Dirai mencatatkan kejayaan atlet itu."],a:1,why:"Ayat “Atlet itu dirai kerana mencatatkan kejayaan” mempunyai susunan yang jelas: subjek atlet itu, predikat dirai dan keterangan sebab."},
+ {topic:"Pembentukan ayat",q:"Pilih bentuk yang lebih sesuai untuk mengelakkan susunan pasif yang janggal dalam contoh “Borang itu ditulis oleh saya”.",opts:["Saya menulis borang itu.","Borang itu saya oleh menulis.","Ditulis borang itu saya.","Oleh borang itu menulis saya."],a:0,why:"Dalam konteks contoh tugasan, ayat aktif “Saya menulis borang itu” lebih langsung dan semula jadi berbanding bentuk pasif “Borang itu ditulis oleh saya”."},
+ {topic:"Ejaan dan tatabahasa",q:"Pilih pembetulan yang tepat berdasarkan contoh ejaan yang dipelajari.",opts:["Aturcara majlis rasmi","Atur cara majlis rasmi","Atur-cara majlis rasmi","Atur cara-majlis rasmi"],a:1,why:"Bentuk yang betul ialah “atur cara”, ditulis sebagai dua perkataan."},
+ {topic:"Kata pinjaman",q:"Bentuk manakah betul berdasarkan contoh pembetulan kata pinjaman?",opts:["Projek insfrastruktur moden","Projek infrastruktur moden","Projek infrasruktur moden","Projek infrastructure moden"],a:1,why:"Ejaan yang betul ialah “infrastruktur”, bukan “insfrastruktur”."},
+ {topic:"Aplikasi pembelajaran",q:"Apakah manfaat utama kuiz interaktif ini dalam pembelajaran BMMB1084?",opts:["Menggantikan semua pembelajaran tatabahasa","Membantu pelajar menguji kefahaman dan menyemak alasan jawapan","Mengajar sejarah semua tulisan dunia","Menghapuskan keperluan membuat latihan"],a:1,why:"Kuiz interaktif menyokong pembelajaran dengan memberi latihan, maklum balas serta peluang menyemak jawapan; ia melengkapi, bukan menggantikan, bahan pembelajaran dan pengajaran."}
+];
+const $ = id => document.getElementById(id);
+let current = 0;
+let answers = Array(questions.length).fill(null);
+let checked = Array(questions.length).fill(false);
+let finished = false;
+let qrDataUrl = "";
+function showScreen(id){["startScreen","quizScreen","resultScreen"].forEach(s=>$(s).classList.toggle("hidden",s!==id));}
+function startQuiz(){current=0;answers=Array(questions.length).fill(null);checked=Array(questions.length).fill(false);finished=false;$("reviewList").classList.add("hidden");$("reviewList").innerHTML="";showScreen("quizScreen");renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}
+function renderQuestion(){
+ const item=questions[current];
+ $("topicPill").textContent=item.topic;
+ $("progressText").textContent=`Soalan ${current+1} daripada ${questions.length}`;
+ $("progressFill").style.width=`${((current+1)/questions.length)*100}%`;
+ $("progressBar").setAttribute("aria-valuenow",String(current+1));
+ $("questionText").textContent=`${current+1}. ${item.q}`;
+ $("options").innerHTML="";
+ item.opts.forEach((opt,i)=>{
+   const b=document.createElement("button");b.type="button";b.className="option";b.disabled=checked[current];
+   if(answers[current]===i)b.classList.add("selected");
+   if(checked[current]&&i===item.a)b.classList.add("correct");
+   if(checked[current]&&answers[current]===i&&i!==item.a)b.classList.add("wrong");
+   const letter=document.createElement("span");letter.className="letter";letter.textContent="ABCD"[i];
+   const label=document.createElement("span");label.textContent=opt;b.append(letter,label);
+   b.addEventListener("click",()=>{if(checked[current])return;answers[current]=i;renderQuestion();});
+   $("options").appendChild(b);
+ });
+ $("feedback").className="feedback hidden";$("feedback").textContent="";
+ if(checked[current]){
+   const fb=$("feedback");fb.classList.remove("hidden");fb.classList.add(answers[current]===item.a?"good":"bad");
+   const strong=document.createElement("strong");strong.textContent=answers[current]===item.a?"Betul!":"Belum tepat.";
+   fb.append(strong,document.createTextNode(`Jawapan terbaik: ${"ABCD"[item.a]}. ${item.opts[item.a]} — ${item.why}`));
+ }
+ $("prevBtn").disabled=current===0;
+ $("checkBtn").disabled=checked[current];
+ $("checkBtn").textContent=checked[current]?"Jawapan Disemak":"Semak Jawapan";
+ $("nextBtn").textContent=current===questions.length-1?"Lihat Keputusan →":"Seterusnya →";
+}
+function checkAnswer(){
+ if(answers[current]===null){$("feedback").className="feedback bad";$("feedback").textContent="Pilih satu jawapan dahulu sebelum menyemak.";return;}
+ checked[current]=true;renderQuestion();
+}
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}else showResults();}
+function prevQuestion(){if(current>0){current--;renderQuestion();}}
+function showResults(){
+ finished=true;showScreen("resultScreen");
+ const score=questions.reduce((n,q,i)=>n+(answers[i]===q.a?1:0),0);
+ const pct=Math.round(score/questions.length*100);
+ $("scoreNumber").textContent=`${score}/${questions.length}`;
+ $("scoreCircle").style.setProperty("--deg",`${pct*3.6}deg`);
+ $("scoreSummary").textContent=`Markah anda: ${pct}%`;
+ $("scoreFeedback").textContent=pct>=85?"Cemerlang! Anda menunjukkan penguasaan yang sangat baik. Teruskan mengukuhkan kefahaman dengan mengulang kaji.":pct>=65?"Bagus! Anda sudah memahami banyak konsep. Semak semula jawapan yang salah untuk mengukuhkan pembelajaran.":"Teruskan berlatih. Baca semula nota dan gunakan semakan jawapan untuk mengenal pasti konsep yang perlu diperkukuh.";
+ $("reviewList").classList.add("hidden");$("reviewList").innerHTML="";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function buildReview(){
+ const list=$("reviewList");list.innerHTML="";
+ questions.forEach((q,i)=>{
+  const box=document.createElement("article");box.className="review-item";
+  const title=document.createElement("h3");title.textContent=`${i+1}. ${q.q}`;box.appendChild(title);
+  const your=document.createElement("p");your.innerHTML='<span class="review-label">Jawapan anda:</span> ';
+  const yourText=document.createElement("span");
+  if(answers[i]===null){yourText.textContent="Tidak dijawab";yourText.className="wrong-text";}
+  else{yourText.textContent=`${"ABCD"[answers[i]]}. ${q.opts[answers[i]]}`;yourText.className=answers[i]===q.a?"correct-text":"wrong-text";}
+  your.appendChild(yourText);box.appendChild(your);
+  const correct=document.createElement("p");correct.innerHTML='<span class="review-label">Jawapan betul:</span> ';
+  const ct=document.createElement("span");ct.className="correct-text";ct.textContent=`${"ABCD"[q.a]}. ${q.opts[q.a]}`;correct.appendChild(ct);box.appendChild(correct);
+  const why=document.createElement("p");why.textContent=q.why;box.appendChild(why);
+  list.appendChild(box);
+ });
+ list.classList.remove("hidden");
+}
+$("startBtn").addEventListener("click",startQuiz);
+$("checkBtn").addEventListener("click",checkAnswer);
+$("prevBtn").addEventListener("click",prevQuestion);
+$("nextBtn").addEventListener("click",()=>{if(current===questions.length-1){if(answers.some(a=>a===null)){const first=answers.findIndex(a=>a===null);current=first;renderQuestion();$("feedback").className="feedback bad";$("feedback").textContent="Lengkapkan semua soalan dahulu untuk melihat keputusan.";return;}if(!checked.every(Boolean)){if(answers[current]!==null&&!checked[current])checkAnswer();if(!checked.every(Boolean)){$("feedback").className="feedback bad";$("feedback").textContent="Semak jawapan bagi setiap soalan sebelum melihat keputusan.";return;}}showResults();}else nextQuestion();});
+$("reviewBtn").addEventListener("click",()=>{buildReview();$("reviewList").scrollIntoView({behavior:"smooth",block:"start"});});
+$("retryBtn").addEventListener("click",startQuiz);
+$("generateQrBtn").addEventListener("click",()=>{
+ const url=$("publicUrl").value.trim();const status=$("qrStatus");const box=$("qrBox");
+ if(!url){status.textContent="Masukkan URL awam terlebih dahulu.";return;}
+ let parsed;try{parsed=new URL(url);}catch(e){status.textContent="URL tidak sah. Gunakan pautan penuh yang bermula dengan https://.";return;}
+ if(!["http:","https:"].includes(parsed.protocol)||parsed.protocol==="file:"){status.textContent="Gunakan URL awam http:// atau https://, bukan alamat fail tempatan.";return;}
+ const qrUrl="https://api.qrserver.com/v1/create-qr-code/?size=360x360&format=png&margin=12&data="+encodeURIComponent(url);
+ status.textContent="Sedang memuatkan kod QR. Pastikan peranti mempunyai Internet.";
+ box.innerHTML="";
+ const img=document.createElement("img");img.alt="Kod QR untuk membuka kuiz pada URL awam yang dimasukkan";img.src=qrUrl;
+ img.onload=()=>{qrDataUrl=qrUrl;$("downloadQrBtn").disabled=false;status.textContent="Kod QR dijana. Imbas dengan telefon untuk menguji URL sebelum dicetak.";};
+ img.onerror=()=>{qrDataUrl="";$("downloadQrBtn").disabled=true;box.textContent="Kod QR gagal dimuatkan. Semak Internet atau cuba lagi.";status.textContent="Penjana QR dalam talian tidak dapat dicapai.";};
+ box.appendChild(img);
+});
+$("downloadQrBtn").addEventListener("click",async()=>{
+ if(!qrDataUrl)return;
+ const status=$("qrStatus");
+ try{
+  const response=await fetch(qrDataUrl);if(!response.ok)throw new Error("QR fetch failed");
+  const blob=await response.blob();const objectUrl=URL.createObjectURL(blob);const a=document.createElement("a");a.href=objectUrl;a.download="Kod_QR_Kuiz_BMMB1084.png";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);status.textContent="Muat turun PNG dimulakan.";
+ }catch(e){window.open(qrDataUrl,"_blank","noopener");status.textContent="Imej QR dibuka dalam tab baharu. Jika muat turun automatik disekat, simpan imej itu daripada pelayar.";
+ }
+});
+</script>
+</body>
+</html>
